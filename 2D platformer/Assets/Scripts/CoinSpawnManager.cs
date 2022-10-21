@@ -5,7 +5,9 @@ using UnityEngine;
 public class CoinSpawnManager : MonoBehaviour
 {
     public GameObject[] coinPrefabs;
+    [SerializeField]
     public float spawnRangeX;
+    [SerializeField]
     public float spawnPosY;
     public int spawnRateBig;
     public int bigSpawn = 0;
