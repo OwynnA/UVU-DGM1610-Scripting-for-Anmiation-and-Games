@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1171965317313676982}
   - component: {fileID: 1171965317313676983}
   - component: {fileID: -3430059584456569001}
-  - component: {fileID: 4431235934440772624}
+  - component: {fileID: 3628573909929917256}
   m_Layer: 0
   m_Name: UFOScout
   m_TagString: Untagged
@@ -228,8 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 0}
   scoreToGive: 75
-  explosionParticle: {fileID: 0}
---- !u!114 &4431235934440772624
+--- !u!114 &3628573909929917256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,7 +237,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1171965317313676984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8acc4a4f53ca44cd9a225cf29f3a915a, type: 3}
+  m_Script: {fileID: 11500000, guid: 38af144cae6274fb6808167b41187909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   topBounds: 30

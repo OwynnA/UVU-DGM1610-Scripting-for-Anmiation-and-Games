@@ -18,6 +18,7 @@ public class DetectCollisions : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("well something happened");
         Explosion();
         scoreManager.IncreaseScore(scoreToGive); //increase score
         Destroy(gameObject); // destory this game object

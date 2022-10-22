@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3387645260149291551}
   - component: {fileID: 3387645260149291550}
   - component: {fileID: 7856289296939291420}
-  - component: {fileID: 1884264131153577699}
+  - component: {fileID: -2423163839765372051}
   m_Layer: 0
   m_Name: UFOInvader
   m_TagString: Untagged
@@ -145,8 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 0}
   scoreToGive: 50
-  explosionParticle: {fileID: 0}
---- !u!114 &1884264131153577699
+--- !u!114 &-2423163839765372051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,7 +154,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3387645260149291549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8acc4a4f53ca44cd9a225cf29f3a915a, type: 3}
+  m_Script: {fileID: 11500000, guid: 38af144cae6274fb6808167b41187909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   topBounds: 30
