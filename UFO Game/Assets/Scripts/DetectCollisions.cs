@@ -11,7 +11,6 @@ public class DetectCollisions : MonoBehaviour
     void Start()
     {
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();// reference score manager
-        explosionParticle.Stop();
     }
     
 
@@ -28,6 +27,5 @@ public class DetectCollisions : MonoBehaviour
     void Explosion()
     {
         Instantiate(explosionParticle, transform.position, transform.rotation);//make particles exist
-        explosionParticle.Stop();
     }
 }
