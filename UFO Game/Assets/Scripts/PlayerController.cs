@@ -12,10 +12,15 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource blasterAudio;
     public AudioClip laserBlast;
+
+    private AudioSource backgroundAudio;
+    public AudioClip background;
     // Start is called before the first frame update
     void Start()
     {
         blasterAudio = GetComponent<AudioSource>();
+        backgroundAudio = GetComponent<AudioSource>();
+        backgroundAudio.PlayOneShot(background,1.0f);
     }
 
     // Update is called once per frame
