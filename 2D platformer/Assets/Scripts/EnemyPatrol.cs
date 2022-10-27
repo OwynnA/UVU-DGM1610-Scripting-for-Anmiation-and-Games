@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    public float speed;
-    public float rayDistance;
-    private bool isMovingRight = true;
-    public transform groundDetection;
+    public float speed; // how fast the enemy moves
+    public float rayDistance; // how far the ray goes
+    private bool isMovingRight = true; //is the enemy moving right
+    public Transform groundDetection; //is the enemy touching the ground
 
     // Update is called once per frame
     void Update()
     {
+        //movev the enemy to the right
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-        RaycastHit2D groundInfo = Physics2D.RayCast(groundDetection.position, vector2.down, rayDistance);
+        //Raycast - produces a ray from an origin point in a certain direction with a set distance
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, rayDistance);
         if(groundInfo.collider == false)
         {
             if(isMovingRight == true)
             {
+                //flip enemy at edge to move left
                 transform.eulerAngles = new Vector3(0, -180, 0);
                 isMovingRight = false;
             }
             else
             {
-                transform.eulerAngles  new Vector3(0, 0, 0);
+                //flip enemy at edge to move right
+                transform.eulerAngles = new Vector3(0, 0, 0);
                 isMovingRight = true;
             }
         }
