@@ -17,7 +17,6 @@ public class RangedWeapon : MonoBehaviour
     }
     void Shoot()
     {
-        Debug.Log("If you can't see this something is wrong");
         Instantiate(projectile, firePoint.position, firePoint.rotation); // make the projectile exist
     }
 }
