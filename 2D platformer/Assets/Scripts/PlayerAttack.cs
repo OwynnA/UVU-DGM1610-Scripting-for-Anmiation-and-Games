@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private float attackDelay;
     private float startDelay;
-    public transform attackPos;
+    public Transform attackPos;
     public LayerMask whatIsEnemies;
     public float attackRange;
     public int damage;
@@ -19,12 +19,12 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(attack dealy <= 0) //if attack delay is zero, fire at will
+        if(attackRange <= 0)
         {
-            if(input.GetKey(KeyCode.Space)) //wait for the signal
+            if(Input.GetKey(KeyCode.F))
             {
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
-                for(int i = 0; i < enemiesToDamage.Length; i++)
+                for(int i=0; i < enemiesToDamage.Length; i++)
                 {
                     enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
                 }
@@ -33,12 +33,12 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            atackDelay -= Time.deltaTime;//its the final countdown!!
+            attackDelay -= Time.deltaTime;
         }
     }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.Position, attackRange);
+        Gizmos. DrawWireSphere(attackPos.position, attackRange);
     }
 }

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class EnemyAttsck : MonoBehaviour
 {
-    private Health PlayerHealth;
+    private Health playerHealth;
+    public int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
-        PlayerHeath = GameObject.Find("Player").GetComponent("PlayerHealth"); //find PlayerHealth Script
+        playerHealth = GameObject.Find("Player").GetComponent<Health>(); //find PlayerHealth Script
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class EnemyAttsck : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            PLayerHealth.TakeDamage();
+            playerHealth.TakeDamage(damage);
         }
     }
 }
