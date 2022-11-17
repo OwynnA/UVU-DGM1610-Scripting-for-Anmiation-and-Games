@@ -35,14 +35,26 @@ public class PlayerController : MonoBehaviour
     }
     void Move()
     {
-        float x = Input.GetAxis("Horizontal") * moveSpeed;
-        float z = Input.GetAxis("Vertical") * moveSpeed;
-        rb.velocity = new Vector3(x, rb.velocity.y, z);
+        float x = Input.GetAxis("Horizontal") * moveSpeed; //getting imput for left and right movement
+        float z = Input.GetAxis("Vertical") * moveSpeed; //getting input for forward and back movement
+        rb.velocity = new Vector3(x, rb.velocity.y, z); //apply velocity to the x and z axis to drive player movement
 
     }
     void CameraLook()
     {
-        float y = Input.GetAxis("Mouse X") * lookSensitivity;
-        rotX += Input.GetAxis("Mouse Y") * lookSensitivity;
+        float y = Input.GetAxis("Mouse X") * lookSensitivity; //look up and down
+        rotX += Input.GetAxis("Mouse Y") * lookSensitivity; //lookleft and right
+        rotX = Mathf.Clamp(rotX, minLookX, maxLookX); // restrict rotation on the x axis from min to maxLookX
+        //drives camera rotation
+        camera.transform.localRotation = Quaternion.Euler(-rotX, 0, 0);
+        transform.eulerAngles += Vector3.up * y;
+    }
+    void Jump()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        if(Physics.Raycast(ray, 1.1f))
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     }
 }
