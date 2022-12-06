@@ -36,7 +36,7 @@ public class Pickup : MonoBehaviour
             switch(type)
             {
                 case PickupType.Health:
-                player.GiveHeatlh(value);
+                player.GiveHealth(value);
                 break;
                 case PickupType.Ammo:
                 player.GiveAmmo(ammoAmount);
@@ -46,7 +46,7 @@ public class Pickup : MonoBehaviour
                 print("Type not accepted");
                 break;
             }
-            other.GetComponent<AudioSource>.PlayOneShot(pickupSFX);
+            //other.GetComponent<AudioSource>.PlayOneShot(pickupSFX);
         }
     }
     // Update is called once per frame

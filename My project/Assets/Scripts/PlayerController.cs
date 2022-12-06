@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [Header("Player Movement")]
     public float moveSpeed;
     public float jumpForce;
+    public float curHP;
+    public float maxHP;
 
     [Header("Camera")]
     public float lookSensitivity;
@@ -33,6 +35,25 @@ public class PlayerController : MonoBehaviour
         Move();
         CameraLook();
     }
+    public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+        if(curHP <= 0)
+        {
+            Die();
+        }
+
+        //GameUI.instance.UpdateHealthBar(curHP, maxHP);
+    }
+    void Die()
+    {
+        //GameManager.instance.LoseGame();
+        Debug.Log("You done died");
+    }
+    void LoseGame()
+    {
+        Debug.Log("the game is lost");
+    }
     void Move()
     {
         float x = Input.GetAxis("Horizontal") * moveSpeed; //getting imput for left and right movement
@@ -56,5 +77,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+     public void GiveHealth(int amountToGive)
+    {
+        curHP = Mathf.Clamp(curHP + amountToGive, 0, maxHP);
+    }
+     public void GiveAmmo(int amountToGive)
+    {
+        //weapon.curAmmo = Mathf.Clamp(curHp + amountToGive, 0, weapon.maxAmmo);
     }
 }
