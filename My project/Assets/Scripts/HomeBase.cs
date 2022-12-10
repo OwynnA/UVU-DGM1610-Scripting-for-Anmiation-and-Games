@@ -9,7 +9,7 @@ public class HomeBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
         flagRend = GameObject.Find("FlagHome").GetComponent<Renderer>();
         flagRend.enabled = false; // hide the flag
     }
@@ -18,7 +18,7 @@ public class HomeBase : MonoBehaviour
        if(Other.CompareTag("Player") && gm.hasFlag)
         {
             Debug.Log("Player has reached home base");
-            gm.PlaceFlag(); // run place flag function in gmae manager
+            gm.PlaceFlag(); // run place flag function in game manager
             flagRend.enabled = true; //Make flag visible
 
         }

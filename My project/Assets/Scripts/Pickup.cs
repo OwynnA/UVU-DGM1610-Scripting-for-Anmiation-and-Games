@@ -13,12 +13,12 @@ public class Pickup : MonoBehaviour
     public float bobHeight;
     private bool bobbingUp;
     private Vector3 startPos;
-
-    public AudioClip pickupSFX;
+    private SoundManager health;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = GameObject.FindGameObjectWithTag("Sound Manager").GetComponent<SoundManager>();
         startPos = transform.position;
     }
     public enum PickupType
@@ -37,6 +37,7 @@ public class Pickup : MonoBehaviour
             {
                 case PickupType.Health:
                 player.GiveHealth(value);
+                health.HealthSFX();
                 Destroy(gameObject);
                 break;
                 case PickupType.Ammo:

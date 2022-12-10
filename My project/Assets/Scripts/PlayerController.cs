@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour
     private float rotX;
     private Camera camera;
     private Rigidbody rb;
+
+    [Header("Audio")]
+    private AudioSource takeDamage;
+    public AudioClip ouch;
+
     void Awake()
     {
         curHP = maxHP;
@@ -27,7 +32,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        takeDamage = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         curHP -= damage;
+        takeDamage.PlayOneShot(ouch, 0.5f);
         if(curHP <= 0)
         {
             Die();
@@ -55,6 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         //GameManager.instance.LoseGame();
         Debug.Log("You done died");
+        Time.timeScale = 0;
     }
     void LoseGame()
     {

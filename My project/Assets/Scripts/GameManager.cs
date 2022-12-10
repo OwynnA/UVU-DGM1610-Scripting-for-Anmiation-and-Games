@@ -10,6 +10,13 @@ public class GameManager : MonoBehaviour
     public int scoreToWin;
     public int curScore;
     public bool gamePaused;
+    private bool winComplete = false;
+    [Header ("Audio")]
+    private AudioSource backgroundAudio;
+    public AudioClip background;
+
+    private AudioSource winGame;
+    public AudioClip win;
 
     //instance
     public static GameManager instance;
@@ -22,7 +29,11 @@ public class GameManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        //setting sudio   
+        backgroundAudio = GetComponent<AudioSource>();
+        winGame = GetComponent<AudioSource>();
+        backgroundAudio.PlayOneShot(background, 0.1f);
         //flag bools
         hasFlag = false;
         flagPlaced = false;
@@ -32,14 +43,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(flagPlaced)
+        if(flagPlaced && winComplete == false)
         {
             WinGame();
+            winComplete = true;
         }
-        if(Input.GetButtonDown("Cancel1"))
+        /*if(Input.GetButtonDown("Cancel1"))
         {
             TogglePauseGame();
-        }
+        }*/
     }
     public void TogglePauseGame()
     {
@@ -58,13 +70,14 @@ public class GameManager : MonoBehaviour
     }
     public void WinGame()
     {
+        backgroundAudio.Stop();
+        winGame.PlayOneShot(win, 1.0f);
         Debug.Log("You've won the game");
         Time.timeScale = 0;
     }
     public void LoseGame()
     {
-        Time.timeScale = 0.0f;
-        gamePaused = true;
+        Time.timeScale = 0;
         Debug.Log ("You have lost the game");
     }
     public void PlaceFlag()

@@ -12,16 +12,16 @@ public class Enemy : MonoBehaviour
     public float moveSpeed, attackRange, ypathOffset;
     //coordiantes for a path
     private List<Vector3> path;
-    //enemy weapon
-    //private Weapon weapon;
     //target to follow
     private GameObject target;
     private PlayerController player;
+    private float attackDelay = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         target = FindObjectOfType<PlayerController>().gameObject;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         GameObject.Find("Player");
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
         curHp = maxHp;
@@ -70,7 +70,15 @@ public class Enemy : MonoBehaviour
         //if within attack range, shoot player
         if(distance <= attackRange)
         {
-            player.TakeDamage(1);
+            if(attackDelay <= 0)
+            {
+                player.TakeDamage(1);
+                attackDelay = 0.5f;
+            }
+            else
+            {
+                attackDelay -= Time.deltaTime;
+            }
         }
         else
         {

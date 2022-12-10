@@ -18,9 +18,9 @@ public class EnemyAttsck : MonoBehaviour
         
     }
 
-    public void OnTriggerEneter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D Other)
     {
-        if(other.CompareTag("Player"))
+        if(Other.CompareTag("Player"))
         {
             playerHealth.TakeDamage(damage);
         }
