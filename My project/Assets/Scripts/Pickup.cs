@@ -37,6 +37,7 @@ public class Pickup : MonoBehaviour
             {
                 case PickupType.Health:
                 player.GiveHealth(value);
+                Destroy(gameObject);
                 break;
                 case PickupType.Ammo:
                 player.GiveAmmo(ammoAmount);

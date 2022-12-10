@@ -14,11 +14,12 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity;
     public float maxLookX;
     public float minLookX;
-    public float rotX;
+    private float rotX;
     private Camera camera;
     private Rigidbody rb;
     void Awake()
     {
+        curHP = maxHP;
         //Get Components
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
@@ -34,6 +35,11 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         CameraLook();
+        if(Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+        
     }
     public void TakeDamage(int damage)
     {
@@ -58,7 +64,9 @@ public class PlayerController : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal") * moveSpeed; //getting imput for left and right movement
         float z = Input.GetAxis("Vertical") * moveSpeed; //getting input for forward and back movement
-        rb.velocity = new Vector3(x, rb.velocity.y, z); //apply velocity to the x and z axis to drive player movement
+        Vector3 dir = (transform.right * x) + (transform.forward * z);
+        dir.y = rb.velocity.y;
+        rb.velocity = dir;
 
     }
     void CameraLook()
