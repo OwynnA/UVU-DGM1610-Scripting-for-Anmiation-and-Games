@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         //setting sudio   
         backgroundAudio = GetComponent<AudioSource>();
         winGame = GetComponent<AudioSource>();
-        backgroundAudio.PlayOneShot(background, 0.1f);
+        backgroundAudio.PlayOneShot(background, 0.3f);
         //flag bools
         hasFlag = false;
         flagPlaced = false;
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     public void WinGame()
     {
         backgroundAudio.Stop();
-        winGame.PlayOneShot(win, 1.0f);
+        winGame.PlayOneShot(win, 1.5f);
         Debug.Log("You've won the game");
         Time.timeScale = 0;
     }

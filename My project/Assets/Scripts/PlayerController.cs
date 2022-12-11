@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         curHP -= damage;
-        takeDamage.PlayOneShot(ouch, 0.5f);
+        takeDamage.PlayOneShot(ouch, 1.5f);
         if(curHP <= 0)
         {
             Die();

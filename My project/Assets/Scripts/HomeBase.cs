@@ -20,7 +20,6 @@ public class HomeBase : MonoBehaviour
             Debug.Log("Player has reached home base");
             gm.PlaceFlag(); // run place flag function in game manager
             flagRend.enabled = true; //Make flag visible
-
         }
     }
 }
